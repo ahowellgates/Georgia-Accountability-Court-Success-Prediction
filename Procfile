@@ -1,1 +1,1 @@
-web: gunicorn .app:app
+web: gunicorn Georgia-Accountability-Court-Success-Prediction.app:app
