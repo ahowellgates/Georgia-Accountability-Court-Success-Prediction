@@ -9,7 +9,7 @@ app = Flask(__name__)
 # prediction function
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1, 8)
-    loaded_model = pickle.load(open("finalized_model.pkl", "rb"))
+    loaded_model = pickle.load(open("finalized_model2.pkl", "rb"))
     result = loaded_model.predict(to_predict)
     return result[0]
  
@@ -24,10 +24,11 @@ def result():
         to_predict_list = list(to_predict_list.values())
         to_predict_list = list(map(int, to_predict_list))
         result = ValuePredictor(to_predict_list)       
-        if result== 'Terminated/Discharge':
-            prediction ='He or She will likely be TERMINATED from the program'
+        if result== 'Terminated/Discharged':
+            prediction ='TERMINATED OR DISCHARGED'
         else:
-            prediction ='He or She will likely GRADUATE or COMPLETE the program'
+            prediction ='GRADUATED OR COMPLETED'
+            
                                 
         return render_template("predict.html", 
         prediction = prediction,
